@@ -29,13 +29,31 @@ public class Derangement
         }
     }
 
+    private Long getFactorial(Long n) throws IllegalArgumentException
+    {
+        if(n < 0)
+        {
+            throw new IllegalArgumentException();
+        }
+        if(n == 0)
+        {
+            return 1L;
+        }
+        else
+        {
+            return n * getFactorial(n - 1);
+        }
+    }
+
     public void calculateProbability()
     {
         try
         {
             Long n = Long.parseLong(input);
             Long numerator = getDerangement(n);
-            System.out.println("the numerator = " + numerator);
+            Long denominator = getFactorial(n);
+            System.out.println("the numerator (derangement) = " + numerator);
+            System.out.println("the denominator (factorial) = " + denominator);
         }
         catch (NumberFormatException e)
         {

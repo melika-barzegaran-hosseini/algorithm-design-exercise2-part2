@@ -63,7 +63,11 @@ public class Derangement
         try
         {
             Long n = Long.parseLong(input);
+
+            long startTime = System.currentTimeMillis();
             Long numerator = getDerangement(n);
+            long endTime = System.currentTimeMillis();
+
             Long denominator = getFactorial(n);
             String fraction = simplifyFraction(numerator, denominator);
 
@@ -76,6 +80,7 @@ public class Derangement
             else
             {
                 System.out.println(fraction);
+                System.out.println("the execution time of computing derangement = " + (endTime - startTime));
             }
         }
         catch (NumberFormatException e)
@@ -92,7 +97,14 @@ public class Derangement
 
     public static void main(String args[])
     {
-        Derangement derangement = new Derangement(args[0]);
-        derangement.calculateProbability();
+        if(args.length == 1)
+        {
+            Derangement derangement = new Derangement(args[0]);
+            derangement.calculateProbability();
+        }
+        else
+        {
+            System.err.println("error: the input is invalid. it should be the number of people.");
+        }
     }
 }

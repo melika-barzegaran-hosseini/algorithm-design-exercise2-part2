@@ -3,10 +3,12 @@ package part2;
 public class Derangement
 {
     private String input;
+    private boolean print;
 
     public Derangement(String input)
     {
         this.input = input;
+        this.print = false;
     }
 
     private Long getDerangement(Long n) throws IllegalArgumentException
@@ -65,9 +67,16 @@ public class Derangement
             Long denominator = getFactorial(n);
             String fraction = simplifyFraction(numerator, denominator);
 
-            System.out.println("the numerator (derangement) = " + numerator);
-            System.out.println("the denominator (factorial) = " + denominator);
-            System.out.println("the simplified fraction = " + fraction);
+            if(print)
+            {
+                System.out.println("the numerator (derangement) = " + numerator);
+                System.out.println("the denominator (factorial) = " + denominator);
+                System.out.println("the simplified fraction = " + fraction);
+            }
+            else
+            {
+                System.out.println(fraction);
+            }
         }
         catch (NumberFormatException e)
         {

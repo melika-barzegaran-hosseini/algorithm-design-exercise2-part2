@@ -45,6 +45,17 @@ public class Derangement
         }
     }
 
+    private static long getGCD(Long a, Long b)
+    {
+        return b == 0 ? a : getGCD(b, a % b);
+    }
+
+    private static String simplifyFraction(Long a, Long b)
+    {
+        Long gcd = getGCD(a, b);
+        return (a / gcd) + "/" + (b / gcd);
+    }
+
     public void calculateProbability()
     {
         try
@@ -52,8 +63,11 @@ public class Derangement
             Long n = Long.parseLong(input);
             Long numerator = getDerangement(n);
             Long denominator = getFactorial(n);
+            String fraction = simplifyFraction(numerator, denominator);
+
             System.out.println("the numerator (derangement) = " + numerator);
             System.out.println("the denominator (factorial) = " + denominator);
+            System.out.println("the simplified fraction = " + fraction);
         }
         catch (NumberFormatException e)
         {

@@ -80,8 +80,9 @@ public class Derangement
             else
             {
                 System.out.println(fraction);
-                System.out.println("the execution time of computing derangement = " + (endTime - startTime));
             }
+
+            System.out.println("the execution time of computing derangement = " + (endTime - startTime));
         }
         catch (NumberFormatException e)
         {
@@ -97,7 +98,18 @@ public class Derangement
 
     public static void main(String args[])
     {
-        if(args.length == 1)
+        if(args.length == 0)
+        {
+            for(Integer counter = 0; counter <= 20; counter++)
+            {
+                System.out.println("input = " + counter);
+                Derangement derangement = new Derangement(counter.toString());
+                derangement.print = true;
+                derangement.calculateProbability();
+                System.out.println();
+            }
+        }
+        else if(args.length == 1)
         {
             Derangement derangement = new Derangement(args[0]);
             derangement.calculateProbability();

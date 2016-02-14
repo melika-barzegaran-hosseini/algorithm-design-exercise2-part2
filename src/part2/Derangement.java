@@ -112,6 +112,7 @@ public class Derangement
         else if(args.length == 1)
         {
             Derangement derangement = new Derangement(args[0]);
+            //derangement.print = true;
             derangement.calculateProbability();
         }
         else
